@@ -1,22 +1,21 @@
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
+import { Async } from "./compontents";
 
 const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export default function Home() {
-  const { status, data, error } = useQuery({
+  const query = useQuery({
     queryKey: ["course_plans"],
     queryFn: () =>
-      fetch(`${baseUrl}/course_plans/get_all`).then((res) => res.json()),
+      fetch(`${baseUrl}/course_plans/get_all`).then(
+        (res) => res.json() as Promise<{ id: number; name: string }>
+      ),
   });
 
-  if (status === "pending") {
-    return <div>Loading...</div>;
-  }
-
-  if (status === "error") {
-    console.error(error);
+  if (query.status === "error") {
+    console.error(query.error);
     return <div>Something went wrong.</div>;
   }
 
@@ -27,9 +26,14 @@ export default function Home() {
       </h1>
       <div className="text-2xl col-span-full text-center p-4">Course plans</div>
 
-      <div className=" col-span-full p4 animate__animated animate__zoomIn">
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
+      <Async
+        status={query.status}
+        render={
+          <div className=" col-span-full p4 animate__animated animate__zoomIn">
+            <pre>{JSON.stringify(query.data, null, 2)}</pre>
+          </div>
+        }
+      />
     </main>
   );
 }
