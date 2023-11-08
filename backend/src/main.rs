@@ -2,7 +2,6 @@ use std::sync::Arc;
 
 use axum::{extract::State, routing::get, Json, Router};
 use libsql_client::{client::Client, Value};
-use shuttle_secrets::SecretStore;
 use tower_http::cors::CorsLayer;
 
 #[derive(serde::Serialize)]
