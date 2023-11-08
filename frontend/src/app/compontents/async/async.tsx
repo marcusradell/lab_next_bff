@@ -19,11 +19,11 @@ export const Async: FC<Props> = ({ status, render }) => {
     if (isLoading) {
       timeout = setTimeout(() => {
         setIsThresholdReached(true);
-      }, 450);
+      }, 500);
     } else {
       timeout = setTimeout(() => {
         setIsDone(true);
-      }, 200);
+      }, 500);
     }
 
     return () => {
