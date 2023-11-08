@@ -25,11 +25,9 @@ export default function Home() {
       <h1 className="col-span-full text-4xl font-bold text-center p-4">
         Lab Next BFF
       </h1>
-      <div className="col-span-full text-center p-4">
-        Is luck on your side today?
-      </div>
+      <div className="text-2xl col-span-full text-center p-4">Course plans</div>
 
-      <div className="text-2xl col-span-full p4 animate__animated animate__zoomIn">
+      <div className=" col-span-full p4 animate__animated animate__zoomIn">
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </main>
