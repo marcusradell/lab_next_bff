@@ -29,7 +29,7 @@ export default function Home() {
       <Async
         status={query.status}
         render={
-          <div className=" col-span-full p4 animate__animated animate__zoomIn">
+          <div className=" col-span-full p4">
             <pre>{JSON.stringify(query.data, null, 2)}</pre>
           </div>
         }
