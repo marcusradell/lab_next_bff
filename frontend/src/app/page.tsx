@@ -3,7 +3,7 @@
 const luckyToString = (lucky: boolean) => (lucky ? "Yes" : "No");
 
 export default function Home() {
-  const lucky = false;
+  const lucky = true;
 
   return (
     <main className="container m-auto grid grid-cols-12">
