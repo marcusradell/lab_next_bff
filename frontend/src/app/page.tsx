@@ -1,6 +1,10 @@
 "use client";
 
+const luckyToString = (lucky: boolean) => (lucky ? "Yes" : "No");
+
 export default function Home() {
+  const lucky = false;
+
   return (
     <main className="container m-auto grid grid-cols-12">
       <h1 className="col-span-full text-4xl font-bold text-center p-4">
@@ -11,7 +15,7 @@ export default function Home() {
       </div>
 
       <div className="text-2xl col-span-full text-center p4 animate__animated animate__zoomIn">
-        No.
+        {luckyToString(lucky)}
       </div>
     </main>
   );
