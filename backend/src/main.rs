@@ -58,7 +58,7 @@ async fn main(
     let router = Router::new()
         .route("/api/luck", get(luck_handler))
         .layer(CorsLayer::permissive())
-        .with_state(appState);
+        .with_state(app_state);
 
     Ok(router.into())
 }
