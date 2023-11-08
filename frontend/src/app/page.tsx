@@ -4,10 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 
 const luckyReplyMessage = (lucky: boolean) => (lucky ? "Yes" : "No");
 
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+
 export default function Home() {
   const { status, data, error } = useQuery({
     queryKey: ["luck"],
-    queryFn: () => Promise.resolve(Math.random() < 0.5),
+    queryFn: () => fetch(`${baseUrl}/luck`).then((res) => res.json()),
   });
 
   if (status === "pending") {
