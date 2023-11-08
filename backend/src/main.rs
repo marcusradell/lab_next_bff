@@ -55,6 +55,7 @@ async fn main(
     };
 
     let router = Router::new()
+        .route("/", get(|| async { "Up and running!" }))
         .route("/api/luck", get(luck_handler))
         .layer(CorsLayer::permissive())
         .with_state(app_state);
