@@ -29,7 +29,7 @@ export default function Home() {
         Is luck on your side today?
       </div>
 
-      <div className="text-2xl col-span-full text-center p4 animate__animated animate__zoomIn">
+      <div className="text-2xl col-span-full p4 animate__animated animate__zoomIn">
         <pre>{JSON.stringify(data, null, 2)}</pre>
       </div>
     </main>
