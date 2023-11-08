@@ -2,23 +2,24 @@
 
 import { useQuery } from "@tanstack/react-query";
 
-const luckyToString = (lucky: boolean) => (lucky ? "Yes" : "No");
+const luckyReplyMessage = (lucky: boolean) => (lucky ? "Yes" : "No");
 
 export default function Home() {
-  const query = useQuery({
-    queryKey: ["repoData"],
+  const { status, data, error } = useQuery({
+    queryKey: ["luck"],
     queryFn: () => Promise.resolve(Math.random() < 0.5),
   });
 
-  if (query.status === "pending") {
+  if (status === "pending") {
     return <div>Loading...</div>;
   }
 
-  if (query.status === "error") {
-    return <div>Something went wrong</div>;
+  if (status === "error") {
+    console.error(error);
+    return <div>Something went wrong.</div>;
   }
 
-  const luckyString = luckyToString(query.data);
+  const luckyString = luckyReplyMessage(data);
 
   return (
     <main className="container m-auto grid grid-cols-12">
