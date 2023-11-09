@@ -10,5 +10,7 @@ COPY . .
 # Compile the application
 RUN cargo build --release
 
+EXPOSE 8080
+
 # Specify the command to run when the container starts
 CMD ["./target/release/lab-next-bff"]
